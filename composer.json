@@ -3,7 +3,8 @@
     "authors": [
         {
             "name": "jstack",
-            "email": "info@jstack.eu"
+            "email": "info@jstack.eu",
+            "homepage": "http://www.jstack.eu"
         }
     ],
     "require": {
@@ -11,5 +12,10 @@
         "besimple/soap-common": "^0.2.0",
         "besimple/soap-client": "^0.2.0",
         "jms/serializer": "~1.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Jstack\\Newyse\\": "."
+        }
     }
 }
