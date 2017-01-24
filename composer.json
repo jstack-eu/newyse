@@ -1,0 +1,15 @@
+{
+    "name": "jstack-eu/newyse",
+    "authors": [
+        {
+            "name": "jstack",
+            "email": "info@jstack.eu"
+        }
+    ],
+    "require": {
+        "php": ">=5.4",
+        "besimple/soap-common": "^0.2.0",
+        "besimple/soap-client": "^0.2.0",
+        "jms/serializer": "~1.0"
+    }
+}
