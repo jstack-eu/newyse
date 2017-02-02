@@ -20,6 +20,7 @@ use Jstack\Newyse\Model\Reservation;
 use Jstack\Newyse\Model\Resort;
 use Jstack\Newyse\Model\AccommodationKind;
 use Jstack\Newyse\Model\ResortActivity;
+use Jstack\Newyse\Model\ResortDetails;
 use Jstack\Newyse\Model\ResourceAddition;
 use Jstack\Newyse\Model\ResourceCapacity;
 use Jstack\Newyse\Model\Source;
@@ -107,6 +108,20 @@ class Newyse
         $resorts = $this->call('getResorts', $criteria);
 
         return $this->mapper->mapArray($resorts->Resorts->ResortItem, new Resort());
+    }
+
+    /**
+     * @param array $criteria
+     *
+     * @return Resort[]
+     */
+    public function getResortDetails(array $criteria = array())
+    {
+        $resortDetails = $this->call('getResortDetails', $criteria);
+
+        $resortDetails = (array) $resortDetails;
+
+        return $this->mapper->map($resortDetails, new ResortDetails());
     }
 
     /**
