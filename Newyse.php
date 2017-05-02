@@ -35,15 +35,50 @@ class Newyse
     /** @var ResponseMapper */
     protected $mapper;
 
+    /** @var string */
+    protected $username;
+
+    /** @var string */
+    protected $password;
+
+    /** @var string */
+    protected $distributionChannel;
+
+    /** @var string */
+    protected $url;
+
+    /** @var string */
+    protected $cacheDir;
+
     /**
-     * Constructor.
+     * Constructor
      *
-     * @param Client $client
+     * @param string      $username
+     * @param string      $password
+     * @param string      $distributionChannel
+     * @param string      $url
+     * @param string|null $cacheDir
      */
-    public function __construct(Client $client)
+    public function __construct($username, $password, $distributionChannel, $url, $cacheDir = null)
     {
-        $this->client = $client;
+        $this->username = $username;
+        $this->password = $password;
+        $this->distributionChannel = $distributionChannel;
+        $this->url = $url;
+        $this->cacheDir = $cacheDir;
         $this->mapper = new ResponseMapper();
+    }
+
+    /**
+     * @return Client
+     */
+    public function getClient()
+    {
+        if (!$this->client) {
+            $this->client = new Client($this->username, $this->password, $this->distributionChannel, $this->url, $this->cacheDir);
+        }
+
+        return $this->client;
     }
 
     /**
@@ -408,22 +443,24 @@ class Newyse
      */
     protected function call($method, $criteria = null)
     {
+        $client = $this->getClient();
+
         try {
-            $sessionKey = $this->client->getSessionKey();
+            $sessionKey = $client->getSessionKey();
 
             if ($criteria) {
                 if (is_array($criteria)) {
                     $criteria = (object) $criteria;
                 }
 
-                $results = $this->client->$method($sessionKey, $criteria);
+                $results = $client->$method($sessionKey, $criteria);
             } else {
-                $results = $this->client->$method($sessionKey);
+                $results = $client->$method($sessionKey);
             }
 
             return $results;
         } catch (\Exception $e) {
-            throw new NewyseException($method, $this->client->__getLastResponse(), $criteria, $e);
+            throw new NewyseException($method, $client->__getLastResponse(), $criteria, $e);
         }
     }
 
@@ -432,7 +469,7 @@ class Newyse
      */
     public function getLastRequest()
     {
-        return $this->client->__getLastRequest();
+        return $this->getClient()->__getLastRequest();
     }
 
     /**
@@ -440,6 +477,6 @@ class Newyse
      */
     public function getLastResponse()
     {
-        return $this->client->__getLastResponse();
+        return $this->getClient()->__getLastResponse();
     }
 }
