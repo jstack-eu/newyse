@@ -50,8 +50,13 @@ class ResponseMapper
 
                 $first = current($data);
                 if (!is_object($first) && !is_array($first)) {
-                    // One To One relation
-                    $value = $this->map($data, $this->toClass($property));
+                    if (count($data) == 1) {
+                        // It's a simple array
+                        $value = [$first];
+                    } else {
+                        // One To One relation
+                        $value = $this->map($data, $this->toClass($property));
+                    }
                 } else {
                     // One To Many relation
                     $value = [];
