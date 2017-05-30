@@ -17,6 +17,7 @@ use Jstack\Newyse\Model\ObjectCapacity;
 use Jstack\Newyse\Model\ObjectReservability;
 use Jstack\Newyse\Model\Property;
 use Jstack\Newyse\Model\Reservation;
+use Jstack\Newyse\Model\ReservationQuestionnaireInformation;
 use Jstack\Newyse\Model\Resort;
 use Jstack\Newyse\Model\AccommodationKind;
 use Jstack\Newyse\Model\ResortActivity;
@@ -404,6 +405,17 @@ class Newyse
         }
 
         return $this->mapper->mapArray($reservationContainer->Reservations->ReservationItem, new Reservation());
+    }
+
+    public function getQuestionnaireInformation($criteria = array())
+    {
+        $questionnaireInformation = $this->call('getQuestionnaireInformation', $criteria);
+
+        if ($questionnaireInformation->ReservationQuestionnaireInformation == null || !isset($questionnaireInformation->ReservationQuestionnaireInformation->ReservationQuestionnaireInformationItem)) {
+            return [];
+        }
+
+        return $this->mapper->mapArray($questionnaireInformation->ReservationQuestionnaireInformation->ReservationQuestionnaireInformationItem, new ReservationQuestionnaireInformation());
     }
 
     /**
