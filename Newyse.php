@@ -260,6 +260,10 @@ class Newyse
     {
         $additions = $this->call('getResourceAdditions', $criteria);
 
+        if ($additions->ResourceAdditions == null || !isset($additions->ResourceAdditions->ResourceAdditionItem)) {
+            return [];
+        }
+
         return $this->mapper->mapArray($additions->ResourceAdditions->ResourceAdditionItem, new ResourceAddition());
     }
 
