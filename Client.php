@@ -15,12 +15,13 @@ class Client extends SoapClient
     protected $distributionChannel;
     protected $languageCode = 'nl';
 
-    public function __construct($username, $password, $distributionChannel, $url, $cacheDir)
+    public function __construct($username, $password, $distributionChannel, $url, $cacheDir, $languageCode = 'nl')
     {
         $this->url = $url;
         $this->username = $username;
         $this->password = $password;
         $this->distributionChannel = $distributionChannel;
+        $this->languageCode = $languageCode;
 
         Cache::setDirectory($cacheDir);
         Cache::setEnabled(1);
