@@ -51,6 +51,9 @@ class Newyse
     /** @var string */
     protected $cacheDir;
 
+    /** @var string  */
+    protected $languageCode = 'nl';
+
     /**
      * Constructor
      *
@@ -71,12 +74,39 @@ class Newyse
     }
 
     /**
+     * @return string
+     */
+    public function getLanguageCode()
+    {
+        return $this->languageCode;
+    }
+
+    /**
+     * @param string $languageCode
+     *
+     * @return Newyse
+     */
+    public function setLanguageCode($languageCode)
+    {
+        $this->languageCode = $languageCode;
+
+        return $this;
+    }
+
+    /**
      * @return Client
      */
     public function getClient()
     {
         if (!$this->client) {
-            $this->client = new Client($this->username, $this->password, $this->distributionChannel, $this->url, $this->cacheDir);
+            $this->client = new Client(
+                $this->username,
+                $this->password,
+                $this->distributionChannel,
+                $this->url,
+                $this->cacheDir,
+                $this->languageCode
+            );
         }
 
         return $this->client;
