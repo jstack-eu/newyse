@@ -64,6 +64,8 @@ class ReservationCriteria extends Criteria
 
     /**
      * @var string
+     *
+     * @JMS\Type("string")
      */
     protected $language;
 
