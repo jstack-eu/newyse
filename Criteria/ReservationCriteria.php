@@ -526,7 +526,7 @@ class ReservationCriteria extends Criteria
                 'SpecialCode' => $this->specialCode,
             ],
             'Preferences' => $this->getPreferences(),
-            'Langauge' => $this->language,
+            'Language' => $this->language,
             'SubjectQuantities' => $this->getSubjectQuantities(),
             'CustomerId' => $this->customerId,
             'Remark' => $this->remark,
