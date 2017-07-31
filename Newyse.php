@@ -9,6 +9,7 @@ use Jstack\Newyse\Model\Availability;
 use Jstack\Newyse\Model\Brochure;
 use Jstack\Newyse\Model\Country;
 use Jstack\Newyse\Model\Customer;
+use Jstack\Newyse\Model\CustomerTitle;
 use Jstack\Newyse\Model\Facility;
 use Jstack\Newyse\Model\ModifiedResource;
 use Jstack\Newyse\Model\Object;
@@ -146,6 +147,22 @@ class Newyse
         }
 
         return $this->mapper->mapArray($accommodationKinds->AccommodationKinds->AccommodationKindItem, new AccommodationKind());
+    }
+
+    /**
+     * Get customer titles
+     *
+     * @return array
+     */
+    public function getCustomerTitles()
+    {
+        $customerTitles = $this->call('getCustomerTitles', []);
+
+        if ($customerTitles->CustomerTitles == null || !isset($customerTitles->CustomerTitles->CustomerTitleItem)) {
+            return [];
+        }
+
+        return $this->mapper->mapArray($customerTitles->CustomerTitles->CustomerTitleItem, new CustomerTitle());
     }
 
     /**
