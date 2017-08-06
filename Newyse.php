@@ -272,6 +272,10 @@ class Newyse
     {
         $subjects = $this->call('getSubjects', $criteria);
 
+        if ($subjects->Subjects == null || !isset($subjects->Subjects->SubjectItem)) {
+            return [];
+        }
+
         return $this->mapper->mapArray($subjects->Subjects->SubjectItem, new Subject());
     }
 
