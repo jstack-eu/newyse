@@ -94,6 +94,11 @@ class Availability
         return $this;
     }
 
+    public function getArrivalDateAsString()
+    {
+        return $this->arrivalDate->format('Y-m-d');
+    }
+
     /**
      * @return \DateTime
      */
@@ -112,6 +117,11 @@ class Availability
         $this->departureDate = $departureDate;
 
         return $this;
+    }
+
+    public function getDepartureDateAsString()
+    {
+        return $this->departureDate->format('Y-m-d');
     }
 
     /**
