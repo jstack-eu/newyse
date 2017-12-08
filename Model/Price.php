@@ -128,8 +128,12 @@ class Price
      * @param \DateTime $calculationDate
      * @return Price
      */
-    public function setCalculationDate(\DateTime $calculationDate)
+    public function setCalculationDate($calculationDate)
     {
+        if(!$calculationDate instanceof \DateTime) {
+            $calculationDate = new \DateTime($calculationDate);
+        }
+
         $this->calculationDate = $calculationDate;
         return $this;
     }
