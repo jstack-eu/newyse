@@ -115,7 +115,7 @@ class ReservationCriteria extends Criteria
     /**
      * @var bool
      */
-    protected $returnBill;
+    protected $returnBill = true;
 
     /**
      * @var bool
