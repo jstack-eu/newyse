@@ -527,7 +527,7 @@ class Newyse
 
             return $results;
         } catch (\Exception $e) {
-            throw new NewyseException($method, $client->__getLastResponse(), $criteria, $e);
+            throw new NewyseException($method, $client->__getLastRequest(), $client->__getLastResponse(), $criteria, $e);
         }
     }
 
