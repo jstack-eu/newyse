@@ -455,7 +455,7 @@ class Newyse
     {
         $reservationContainer = $this->call('getReservation', $criteria);
 
-        if ($reservationContainer->Reservations == null) {
+        if ($reservationContainer->Reservations == null || !isset($reservationContainer->Reservations->ReservationItem)) {
             return [];
         }
 
