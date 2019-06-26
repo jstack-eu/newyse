@@ -109,14 +109,6 @@ class Price
     }
 
     /**
-     * @return float
-     */
-    public function getReferencePriceInclusive()
-    {
-        return $this->referencePriceInclusive;
-    }
-
-    /**
      * @param float $referencePrice
      * @return Price
      */
