@@ -55,6 +55,11 @@ class Price
     protected $special;
 
     /**
+     * @var integer
+     */
+    protected $rateTypeId;
+
+    /**
      * @return float
      */
     public function getPrice()
@@ -69,6 +74,7 @@ class Price
     public function setPrice($price)
     {
         $this->price = $price;
+
         return $this;
     }
 
@@ -87,6 +93,7 @@ class Price
     public function setPriceInclusive($priceInclusive)
     {
         $this->priceInclusive = $priceInclusive;
+
         return $this;
     }
 
@@ -105,6 +112,7 @@ class Price
     public function setReferencePriceInclusive($referencePriceInclusive)
     {
         $this->referencePriceInclusive = $referencePriceInclusive;
+
         return $this;
     }
 
@@ -115,6 +123,7 @@ class Price
     public function setReferencePrice($referencePrice)
     {
         $this->referencePrice = $referencePrice;
+
         return $this;
     }
 
@@ -141,6 +150,7 @@ class Price
     public function setArrivalDate(\DateTime $arrivalDate)
     {
         $this->arrivalDate = $arrivalDate;
+
         return $this;
     }
 
@@ -159,6 +169,7 @@ class Price
     public function setDepartureDate(\DateTime $departureDate)
     {
         $this->departureDate = $departureDate;
+
         return $this;
     }
 
@@ -181,6 +192,7 @@ class Price
         }
 
         $this->calculationDate = $calculationDate;
+
         return $this;
     }
 
@@ -199,6 +211,7 @@ class Price
     public function setQuantity($quantity)
     {
         $this->quantity = $quantity;
+
         return $this;
     }
 
@@ -217,6 +230,26 @@ class Price
     public function setSpecial(Special $special)
     {
         $this->special = $special;
+
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getRateTypeId()
+    {
+        return $this->rateTypeId;
+    }
+
+    /**
+     * @param $rateTypeId
+     * @return $this
+     */
+    public function setRateTypeId($rateTypeId)
+    {
+        $this->rateTypeId = $rateTypeId;
+
         return $this;
     }
 }

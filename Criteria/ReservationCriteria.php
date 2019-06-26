@@ -138,6 +138,13 @@ class ReservationCriteria extends Criteria
     protected $sendEmail;
 
     /**
+     * @var int
+     *
+     * @JMS\Type("integer")
+     */
+    protected $rateTypeId;
+
+    /**
      * @return int
      */
     public function getResourceId()
@@ -583,5 +590,25 @@ class ReservationCriteria extends Criteria
         }
 
         return $preferences;
+    }
+
+    /**
+     * @return int
+     */
+    public function getRateTypeId()
+    {
+        return $this->rateTypeId;
+    }
+
+    /**
+     * @param  int $rateTypeId
+     *
+     * @return ReservationCriteria
+     */
+    public function setRateTypeId($rateTypeId)
+    {
+        $this->rateTypeId = $rateTypeId;
+
+        return $this;
     }
 }
