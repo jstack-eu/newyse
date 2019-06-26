@@ -55,6 +55,11 @@ class Price
     protected $special;
 
     /**
+     * @var integer
+     */
+    protected $rateTypeId;
+
+    /**
      * @return float
      */
     public function getPrice()
@@ -217,6 +222,22 @@ class Price
     public function setSpecial(Special $special)
     {
         $this->special = $special;
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getRateTypeId() {
+        return $this->rateTypeId;
+    }
+
+    /**
+     * @param $rateTypeId
+     * @return $this
+     */
+    public function setRateTypeId($rateTypeId) {
+        $this->rateTypeId = $rateTypeId;
         return $this;
     }
 }
