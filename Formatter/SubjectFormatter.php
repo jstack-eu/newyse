@@ -8,7 +8,7 @@ class SubjectFormatter
      * @param $subjects
      * @return array
      */
-    public function getSubjectQuantities($subjects)
+    public function formatSubjectQuantities($subjects)
     {
         $quantities = [];
         foreach ($subjects as $subject) {
