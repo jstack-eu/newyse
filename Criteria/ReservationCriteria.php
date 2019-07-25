@@ -3,6 +3,7 @@
 namespace Jstack\Newyse\Criteria;
 
 use JMS\Serializer\Annotation as JMS;
+use Jstack\Newyse\Formatter\SubjectFormatter;
 use Jstack\Newyse\Reservation\Addition;
 use Jstack\Newyse\Reservation\Preference;
 use Jstack\Newyse\Reservation\SubjectQuantity;
@@ -526,6 +527,7 @@ class ReservationCriteria extends Criteria
      */
     public function getRequest()
     {
+        $subjectFormatter = new SubjectFormatter();
         return [
             'ReservationCategoryCode' => ($this->reservationCategoryCode) ? $this->reservationCategoryCode : 'res',
             'Accommodation' => [
@@ -536,7 +538,7 @@ class ReservationCriteria extends Criteria
             ],
             'Preferences' => $this->getPreferences(),
             'Language' => $this->language,
-            'SubjectQuantities' => $this->getSubjectQuantities(),
+            'SubjectQuantities' => $subjectFormatter->formatSubjectQuantities($this->subjects),
             'CustomerId' => $this->customerId,
             'Remark' => $this->remark,
             'Voucher' => $this->voucher,
@@ -548,22 +550,6 @@ class ReservationCriteria extends Criteria
             'ReturnTermsAndConditions' => $this->returnTermsAndConditions,
             'SendEmail' => $this->sendEmail,
         ];
-    }
-
-    /**
-     * @return array
-     */
-    private function getSubjectQuantities()
-    {
-        $quantities = [];
-        foreach ($this->subjects as $subject) {
-            $quantities[] = [
-                'SubjectId' => $subject->getSubjectId(),
-                'Quantity' => $subject->getQuantity(),
-            ];
-        }
-
-        return $quantities;
     }
 
     /**
