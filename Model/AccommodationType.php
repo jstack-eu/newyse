@@ -5,7 +5,7 @@ namespace Jstack\Newyse\Model;
 /**
  * Accommodation Type / Resource
  *
- * See http://scws.newyse.com/nwsservice_[YOUR_ACCOUNT_NAME]_live/documentation/xml_ns1__AccommodationType.html
+ * See https://scws.newyse.com/nwsservice_[YOUR_ACCOUNT_NAME]_live/documentation/xml_ns1__AccommodationType.html
  */
 class AccommodationType
 {
