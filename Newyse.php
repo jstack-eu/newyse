@@ -5,6 +5,7 @@ namespace Jstack\Newyse;
 use Jstack\Newyse\Exception\NewyseException;
 use Jstack\Newyse\Mapper\ResponseMapper;
 use Jstack\Newyse\Model\AccommodationType;
+use Jstack\Newyse\Model\AccommodationTypeSearch;
 use Jstack\Newyse\Model\Availability;
 use Jstack\Newyse\Model\Brochure;
 use Jstack\Newyse\Model\Country;
@@ -381,6 +382,22 @@ class Newyse
         }
 
         return $this->mapper->mapArray($objectAvailabilities->ObjectAvailabilities->ObjectAvailabilityItem, new ObjectAvailability());
+    }
+
+    /**
+     * @param array $criteria
+     *
+     * @return array
+     */
+    public function findAccommodationTypes(array $criteria = array())
+    {
+        $accommodationTypes = $this->call('findAccommodationTypes', $criteria);
+
+        if ($accommodationTypes->AccommodationTypes == null || !isset($accommodationTypes->AccommodationTypes->AccommodationTypeItem)) {
+            return [];
+        }
+
+        return $this->mapper->mapArray($accommodationTypes->AccommodationTypes->AccommodationTypeItem, new AccommodationTypeSearch());
     }
 
     /**
