@@ -17,5 +17,8 @@
         "psr-4": {
             "Jstack\\Newyse\\": "."
         }
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^8.3"
     }
 }
