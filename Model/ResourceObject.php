@@ -7,7 +7,7 @@ namespace Jstack\Newyse\Model;
  *
  * See http://scws.newyse.com/nwsservice_[YOUR_ACCOUNT_NAME]_live/documentation/xml_ns1__Object.html
  */
-class Object
+class ResourceObject
 {
     const STATUS_CLEAN = 'CLEAN';
     const STATUS_TO_BE_CLEANED = 'TO_BE_CLEANED';
@@ -77,7 +77,7 @@ class Object
     /**
      * @param int $objectId
      *
-     * @return object
+     * @return ResourceObject
      */
     public function setObjectId($objectId)
     {
@@ -97,7 +97,7 @@ class Object
     /**
      * @param int $resourceId
      *
-     * @return object
+     * @return ResourceObject
      */
     public function setResourceId($resourceId)
     {
@@ -117,7 +117,7 @@ class Object
     /**
      * @param string $code
      *
-     * @return object
+     * @return ResourceObject
      */
     public function setCode($code)
     {
@@ -137,7 +137,7 @@ class Object
     /**
      * @param string $name
      *
-     * @return object
+     * @return ResourceObject
      */
     public function setName($name)
     {
@@ -157,7 +157,7 @@ class Object
     /**
      * @param string $shortDescription
      *
-     * @return object
+     * @return ResourceObject
      */
     public function setShortDescription($shortDescription)
     {
@@ -177,7 +177,7 @@ class Object
     /**
      * @param string $description
      *
-     * @return object
+     * @return ResourceObject
      */
     public function setDescription($description)
     {
@@ -197,7 +197,7 @@ class Object
     /**
      * @param int $propertyManagerId
      *
-     * @return object
+     * @return ResourceObject
      */
     public function setPropertyManagerId($propertyManagerId)
     {
@@ -217,7 +217,7 @@ class Object
     /**
      * @param int $imageManagerId
      *
-     * @return object
+     * @return ResourceObject
      */
     public function setImageManagerId($imageManagerId)
     {
@@ -237,7 +237,7 @@ class Object
     /**
      * @param int $addressManagerId
      *
-     * @return object
+     * @return ResourceObject
      */
     public function setAddressManagerId($addressManagerId)
     {
@@ -257,7 +257,7 @@ class Object
     /**
      * @param string $status
      *
-     * @return object
+     * @return ResourceObject
      */
     public function setStatus($status)
     {
