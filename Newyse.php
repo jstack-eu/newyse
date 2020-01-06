@@ -13,7 +13,7 @@ use Jstack\Newyse\Model\Customer;
 use Jstack\Newyse\Model\CustomerTitle;
 use Jstack\Newyse\Model\Facility;
 use Jstack\Newyse\Model\ModifiedResource;
-use Jstack\Newyse\Model\Object;
+use Jstack\Newyse\Model\ResourceObject;
 use Jstack\Newyse\Model\ObjectAvailability;
 use Jstack\Newyse\Model\ObjectCapacity;
 use Jstack\Newyse\Model\ObjectReservability;
@@ -169,7 +169,7 @@ class Newyse
     /**
      * @param array $criteria
      *
-     * @return object[]
+     * @return ResourceObject[]
      */
     public function getObjects(array $criteria = array())
     {
@@ -179,7 +179,7 @@ class Newyse
             return [];
         }
 
-        return $this->mapper->mapArray($objects->Objects->ObjectItem, new Object());
+        return $this->mapper->mapArray($objects->Objects->ObjectItem, new ResourceObject());
     }
 
     /**
@@ -464,7 +464,7 @@ class Newyse
     /**
      * @param array $criteria
      *
-     * @return array|object
+     * @return array|ResourceObject
      *
      * @throws NewyseException
      */
@@ -493,7 +493,7 @@ class Newyse
     /**
      * @param Customer|array $criteria
      *
-     * @return object
+     * @return ResourceObject
      *
      * @throws NewyseException
      */
@@ -508,7 +508,7 @@ class Newyse
     /**
      * @param array $criteria
      *
-     * @return object
+     * @return ResourceObject
      *
      * @throws NewyseException
      */
@@ -519,11 +519,11 @@ class Newyse
 
     /**
      * @param string       $method
-     * @param array|object $criteria
-     *
-     * @throws NewyseException If the api call failed
+     * @param array|ResourceObject $criteria
      *
      * @return mixed
+     *@throws NewyseException If the api call failed
+     *
      */
     protected function call($method, $criteria = null)
     {

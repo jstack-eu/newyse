@@ -20,7 +20,7 @@ class ObjectReservability
     protected $objectId;
 
     /**
-     * @var Object
+     * @var ResourceObject
      */
     protected $object;
 
@@ -71,7 +71,7 @@ class ObjectReservability
     }
 
     /**
-     * @return Object
+     * @return ResourceObject
      */
     public function getObject()
     {
@@ -79,7 +79,7 @@ class ObjectReservability
     }
 
     /**
-     * @param Object $object
+     * @param ResourceObject $object
      * @return ObjectReservability
      */
     public function setObject($object)

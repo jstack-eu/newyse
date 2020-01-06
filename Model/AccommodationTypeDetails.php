@@ -20,7 +20,7 @@ class AccommodationTypeDetails extends AccommodationType
     protected $dynamicFieldList;
 
     /**
-     * @var object[]
+     * @var ResourceObject[]
      */
     protected $objectList;
 
