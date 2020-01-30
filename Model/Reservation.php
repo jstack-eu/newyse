@@ -130,6 +130,11 @@ class Reservation
     protected $termsAndConditions;
 
     /**
+     * @var string[]
+     */
+    protected $voucher;
+
+    /**
      * @return int
      */
     public function getReservationId()
@@ -605,6 +610,26 @@ class Reservation
     public function setTermsAndConditions($termsAndConditions)
     {
         $this->termsAndConditions = $termsAndConditions;
+
+        return $this;
+    }
+
+    /**
+     * @return \string[]
+     */
+    public function getVoucher()
+    {
+        return $this->voucher;
+    }
+
+    /**
+     * @param \string[] $voucher
+     *
+     * @return Reservation
+     */
+    public function setVoucher($voucher)
+    {
+        $this->voucher = $voucher;
 
         return $this;
     }
