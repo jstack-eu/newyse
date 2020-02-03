@@ -615,7 +615,7 @@ class Reservation
     }
 
     /**
-     * @return \string
+     * @return string
      */
     public function getVoucher()
     {
@@ -623,7 +623,7 @@ class Reservation
     }
 
     /**
-     * @param \string $voucher
+     * @param string $voucher
      *
      * @return Reservation
      */
