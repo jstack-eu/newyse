@@ -5,7 +5,9 @@ namespace Jstack\Newyse\Tests\Mapper;
 use Jstack\Newyse\Mapper\ResponseMapper;
 use Jstack\Newyse\Model\AccommodationType;
 use Jstack\Newyse\Model\Availability;
+use Jstack\Newyse\Model\ObjectReservability;
 use Jstack\Newyse\Model\Property;
+use Jstack\Newyse\Model\ResourceObject;
 use PHPUnit\Framework\TestCase;
 
 class ResponseMapperTest extends TestCase
@@ -93,5 +95,21 @@ class ResponseMapperTest extends TestCase
         $accommodationTypes = $responseMapper->mapArray($array, new AccommodationType());
 
         $this->assertSame('Code2', $accommodationTypes[1]->getCode());
+    }
+
+    public function testMapObjectsAsAssociation()
+    {
+        $objectReservabilityDefinition = [
+            'Object' => (object) [
+                'Name' => 'Object 1',
+                'Description' => 'The object description'
+            ]
+        ];
+
+        $responseMapper = new ResponseMapper();
+        /** @var ObjectReservability $objectReservability */
+        $objectReservability = $responseMapper->map($objectReservabilityDefinition, new ObjectReservability());
+
+        $this->assertInstanceOf(ResourceObject::class, $objectReservability->getObject());
     }
 }

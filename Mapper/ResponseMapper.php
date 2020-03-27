@@ -136,6 +136,11 @@ class ResponseMapper
             $class = substr($class, 0, -4);
         }
 
+        // Object is a reserved keyword, so we use a ResourceObject instead
+        if ($class == 'Object') {
+            $class = 'ResourceObject';
+        }
+
         $class = 'Jstack\\Newyse\\Model\\'.$class;
 
         return new $class();
