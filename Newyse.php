@@ -322,6 +322,22 @@ class Newyse
     /**
      * @param array $criteria
      *
+     * @return ResourceAddition[]
+     */
+    public function getAllResourceAdditions(array $criteria = array())
+    {
+        $additions = $this->call('getAllResourceAdditions', $criteria);
+
+        if ($additions->ResourceAdditions == null || !isset($additions->ResourceAdditions->ResourceAdditionItem)) {
+            return [];
+        }
+
+        return $this->mapper->mapArray($additions->ResourceAdditions->ResourceAdditionItem, new ResourceAddition());
+    }
+
+    /**
+     * @param array $criteria
+     *
      * @return ResourceCapacity[]
      */
     public function getResourceCapacity(array $criteria = array())
